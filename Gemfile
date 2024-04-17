@@ -58,6 +58,8 @@ end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem 'rubocop'
+  gem 'rubocop-rails', require: false
   gem 'web-console'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
@@ -65,12 +67,10 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-  gem 'rubocop', require: false
-  gem 'rubocop-rails', require: false
 end
 
 group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
-  # gem 'webdriver'
+  gem 'webdrivers'
 end
