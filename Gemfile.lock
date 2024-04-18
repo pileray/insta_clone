@@ -198,6 +198,9 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
+    rails-i18n (7.0.9)
+      i18n (>= 0.7, < 2)
+      railties (>= 6.0.0, < 8)
     railties (7.0.2.3)
       actionpack (= 7.0.2.3)
       activesupport (= 7.0.2.3)
@@ -299,6 +302,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootsnap
   capybara
   debug
@@ -309,6 +313,7 @@ DEPENDENCIES
   mysql2 (~> 0.5)
   puma (~> 5.0)
   rails (~> 7.0.2, >= 7.0.2.3)
+  rails-i18n
   redis (~> 4.0)
   rspec-rails
   rubocop
