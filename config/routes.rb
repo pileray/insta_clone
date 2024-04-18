@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'sample/index'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  get 'users/new'
+  get 'users/create'
+  get '/signup', to: 'users#new'
+  post '/signup', to: 'users#create'
 
-  # Defines the root path route ("/")
-  root "samples#index"
+  root 'samples#index'
 end
