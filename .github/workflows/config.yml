@@ -92,5 +92,5 @@ jobs:
       - name: setup bundle
         if: steps.cache-gems.outputs.cache-hit != 'true'
         run: bundle install --jobs 4 --retry 3
-      - name: run rubocop
+      - name: run erblint
         run: bundle exec erblint .
