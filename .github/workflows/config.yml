@@ -52,7 +52,6 @@ jobs:
             tmp/screenshots/
             tmp/capybara/
   rubocop:
-  rubocop:
     runs-on: ubuntu-latest
     container:
       image: ruby:3.1.1
