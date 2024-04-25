@@ -26,6 +26,6 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
 
   def owner?(object)
-    object.user_id == self.id
+    object.user_id == id
   end
 end
