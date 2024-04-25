@@ -36,6 +36,10 @@
         <% end %>
 
         <% if logged_in? %>
+          <%= link_to new_post_path, class: 'btn btn-primary btn-sm me-3' do %>
+            <i class="fas fa-camera me-2"></i>
+            投稿
+          <% end %>
           <div class="dropdown" id="header-avatar-dropdown">
             <a
               class="dropdown-toggle d-flex align-items-center hidden-arrow"
