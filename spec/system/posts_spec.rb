@@ -44,4 +44,15 @@ RSpec.describe "投稿のCRUD", type: :system do
     end
   end
 
+  describe 'ページネーション' do
+    let!(:post){ create(:post, created_at: Time.current.yesterday) }
+    before do
+      create_list(:post, 15)
+    end
+    it '16件目以降が作成された場合、ページネーションが追加される' do
+      visit "/posts"
+      expect(page).not_to have_selector "#post_#{post.id}"
+    end
+  end
+
 end

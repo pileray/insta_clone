@@ -49,6 +49,8 @@ gem 'bootsnap', require: false
 # gem "image_processing", "~> 1.2"
 gem 'activestorage-validator'
 
+gem 'pagy'
+
 gem 'rails-i18n'
 gem 'sorcery'
 

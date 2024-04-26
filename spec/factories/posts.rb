@@ -19,7 +19,7 @@
 FactoryBot.define do
   factory :post do
     body { "テキストです" }
-    user { user }
+    user
     after(:build) do |post|
       post.images.attach(io: File.open('spec/fixtures/dummy.jpg'), filename: 'dummy.jpg', content_type: 'image/jpeg')
     end
