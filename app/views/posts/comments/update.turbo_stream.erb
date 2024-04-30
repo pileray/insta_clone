@@ -1,0 +1,9 @@
+<% if @comment.valid? %>
+  <%= turbo_stream.replace dom_id(@comment) do %>
+    <%= render 'comment', comment: @comment %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.replace dom_id(@comment, 'form') do %>
+    <%= render 'form', post: @comment.post, comment: @comment %>
+  <% end %>
+<% end %>
