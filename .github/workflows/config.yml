@@ -44,7 +44,7 @@ jobs:
       - name: run spec
         run: bundle exec rspec
       - name: Archive rspec result screenshots
-        if: failure()
+        if: failure() 
         uses: actions/upload-artifact@v3
         with:
           name: rspec result screenshots

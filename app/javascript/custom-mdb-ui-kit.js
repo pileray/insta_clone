@@ -9,3 +9,14 @@ const mdbInputUpdate = () => {
 document.addEventListener('turbo:render', () => {
   mdbInputUpdate();
 });
+
+document.addEventListener('turbo:frame-render', () => {
+  mdbInputUpdate();
+});
+
+document.addEventListener('turbo:submit-end', () => {
+  setTimeout(
+    mdbInputUpdate,
+    100
+  )
+});
