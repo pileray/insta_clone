@@ -1,0 +1,7 @@
+<div id="<%= dom_id(post, 'like') %>">
+  <% if current_user.like?(post) %>
+    <%= render 'posts/likes/unlike', post: %>
+  <% else %>
+    <%= render 'posts/likes/like', post: %>
+  <% end %>
+</div>
