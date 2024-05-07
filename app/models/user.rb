@@ -21,12 +21,20 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :like_posts, through: :likes, source: :post
+  has_many :active_relationship, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy,
+                                 inverse_of: :follower
+  has_many :followings, through: :active_relationship, source: :followed
+  has_many :passive_relationship, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy,
+                                  inverse_of: :followed
+  has_many :followers, through: :passive_relationship, source: :follower
 
   validates :username, uniqueness: true, presence: true
   validates :email, uniqueness: true, presence: true
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
+
+  scope :recent, ->(count = 10) { order(created_at: :desc).limit(count) }
 
   def owner?(object)
     object.user_id == id
@@ -42,5 +50,21 @@ class User < ApplicationRecord
 
   def like?(post)
     like_posts.include?(post)
+  end
+
+  def follow(user)
+    followings << user
+  end
+
+  def unfollow(user)
+    followings.destroy(user)
+  end
+
+  def follow?(user)
+    followings.include?(user)
+  end
+
+  def feed
+    Post.where(user_id: following_ids << id)
   end
 end
