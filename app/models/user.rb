@@ -17,6 +17,7 @@
 #
 class User < ApplicationRecord
   authenticates_with_sorcery!
+  has_one_attached :profile_image
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -28,6 +29,7 @@ class User < ApplicationRecord
                                   inverse_of: :followed
   has_many :followers, through: :passive_relationship, source: :follower
 
+  validates :profile_image, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..(5.megabytes) }
   validates :username, uniqueness: true, presence: true
   validates :email, uniqueness: true, presence: true
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
