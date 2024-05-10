@@ -8,12 +8,13 @@ class PostsController < ApplicationController
            Post.ransack(params[:q])
          end
 
-    @pagy, @posts = pagy(@q.result(distinct: true).with_attached_images.includes(:user).order(created_at: :desc))
+    @pagy, @posts = pagy(@q.result(distinct: true).with_attached_images
+                    .includes(user: { profile_image_attachment: { blob: :variant_records } }).order(created_at: :desc))
   end
 
   def show
     @post = Post.find(params[:id])
-    @comments = @post.comments
+    @comments = @post.comments.includes(user: { profile_image_attachment: { blob: :variant_records } })
     @comment = Comment.new
   end
 
