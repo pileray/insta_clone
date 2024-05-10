@@ -1,0 +1,387 @@
+web-1     | Started GET "/posts/9" for 192.168.65.1 at 2024-05-10 17:13:41 +0900
+web-1     | Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+web-1     | Processing by PostsController#show as HTML
+web-1     |   Parameters: {"id"=>"9"}
+web-1     |   Post Load (0.4ms)  SELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 9 LIMIT 1
+web-1     |   ↳ app/controllers/posts_controller.rb:15:in `show'
+web-1     |   Rendering layout layouts/application.html.erb
+web-1     |   Rendering posts/show.html.erb within layouts/application
+web-1     |   ActiveStorage::Attachment Count (0.6ms)  SELECT COUNT(*) FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 9 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'images'
+web-1     |   ↳ app/views/posts/_carousel_images.html.erb:5
+web-1     |   ActiveStorage::Attachment Load (0.5ms)  SELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 9 AND `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'images'
+web-1     |   ↳ app/views/posts/_carousel_images.html.erb:14
+web-1     |   ActiveStorage::Blob Load (0.5ms)  SELECT `active_storage_blobs`.* FROM `active_storage_blobs` WHERE `active_storage_blobs`.`id` = 25 LIMIT 1
+web-1     |   ↳ app/views/posts/_carousel_images.html.erb:16
+web-1     |   ActiveStorage::Blob Load (0.6ms)  SELECT `active_storage_blobs`.* FROM `active_storage_blobs` WHERE `active_storage_blobs`.`id` = 26 LIMIT 1
+web-1     |   ↳ app/views/posts/_carousel_images.html.erb:16
+web-1     |   ActiveStorage::Blob Load (0.5ms)  SELECT `active_storage_blobs`.* FROM `active_storage_blobs` WHERE `active_storage_blobs`.`id` = 27 LIMIT 1
+web-1     |   ↳ app/views/posts/_carousel_images.html.erb:16
+web-1     |   Rendered posts/_carousel_images.html.erb (Duration: 107.8ms | Allocations: 22390)
+web-1     |   User Load (0.5ms)  SELECT `users`.* FROM `users` WHERE `users`.`id` = 9 LIMIT 1
+web-1     |   ↳ app/views/posts/show.html.erb:10
+web-1     |   ActiveStorage::Attachment Load (0.5ms)  SELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 9 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'profile_image' LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:14:in `avatar'
+web-1     |   User Load (0.7ms)  SELECT `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1
+web-1     |   ↳ app/views/posts/show.html.erb:15
+web-1     |   Post Exists? (0.5ms)  SELECT 1 AS one FROM `posts` INNER JOIN `likes` ON `posts`.`id` = `likes`.`post_id` WHERE `likes`.`user_id` = 11 AND `posts`.`id` = 9 LIMIT 1
+web-1     |   ↳ app/models/user.rb:59:in `like?'
+web-1     |   Rendered posts/likes/_like.html.erb (Duration: 0.4ms | Allocations: 93)
+web-1     |   Rendered posts/likes/_likes.html.erb (Duration: 33.7ms | Allocations: 6753)
+web-1     |   Comment Load (0.5ms)  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 9
+web-1     |   ↳ app/views/posts/show.html.erb:62
+web-1     |   User Load (0.7ms)  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+web-1     |   ↳ app/views/posts/comments/_comment.html.erb:3
+web-1     |   ActiveStorage::Attachment Load (0.4ms)  SELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 1 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'profile_image' LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:14:in `avatar'
+web-1     |   CACHE User Load (0.1ms)  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+web-1     |   ↳ app/views/posts/comments/_comment.html.erb:3
+web-1     |   CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 1 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'profile_image' LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:14:in `avatar'
+web-1     |   User Load (1.3ms)  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1
+web-1     |   ↳ app/views/posts/comments/_comment.html.erb:3
+web-1     |   ActiveStorage::Attachment Load (0.5ms)  SELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 2 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'profile_image' LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:14:in `avatar'
+web-1     |   CACHE User Load (0.0ms)  SELECT `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1
+web-1     |   ↳ app/views/posts/comments/_comment.html.erb:3
+web-1     |   ActiveStorage::Attachment Load (0.5ms)  SELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 11 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'profile_image' LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:14:in `avatar'
+web-1     |   ActiveStorage::Blob Load (0.5ms)  SELECT `active_storage_blobs`.* FROM `active_storage_blobs` WHERE `active_storage_blobs`.`id` = 38 LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:25:in `avatar'
+web-1     |   ActiveStorage::VariantRecord Load (0.4ms)  SELECT `active_storage_variant_records`.* FROM `active_storage_variant_records` WHERE `active_storage_variant_records`.`blob_id` = 38 AND `active_storage_variant_records`.`variation_digest` = 'EHCfWBA4Ulm0qPBU5kp7oAAzt/0=' LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:25:in `avatar'
+web-1     |   Rendered collection of posts/comments/_comment.html.erb [4 times] (Duration: 73.7ms | Allocations: 18531)
+web-1     |   Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+web-1     |   Rendered posts/comments/_form.html.erb (Duration: 3.2ms | Allocations: 690)
+web-1     |   Rendered posts/show.html.erb within layouts/application (Duration: 283.1ms | Allocations: 70121)
+web-1     |   Rendered shared/_search_modal.html.erb (Duration: 1.4ms | Allocations: 746)
+web-1     |   CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 11 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'profile_image' LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:14:in `avatar'
+web-1     |   CACHE ActiveStorage::Blob Load (0.0ms)  SELECT `active_storage_blobs`.* FROM `active_storage_blobs` WHERE `active_storage_blobs`.`id` = 38 LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:25:in `avatar'
+web-1     |   CACHE ActiveStorage::VariantRecord Load (0.1ms)  SELECT `active_storage_variant_records`.* FROM `active_storage_variant_records` WHERE `active_storage_variant_records`.`blob_id` = 38 AND `active_storage_variant_records`.`variation_digest` = 'EHCfWBA4Ulm0qPBU5kp7oAAzt/0=' LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:25:in `avatar'
+web-1     |   Rendered layouts/_header.html.erb (Duration: 22.6ms | Allocations: 3948)
+web-1     |   Rendered shared/_flash_messages.html.erb (Duration: 0.2ms | Allocations: 36)
+web-1     |   Rendered layout layouts/application.html.erb (Duration: 465.2ms | Allocations: 87469)
+web-1     | Completed 200 OK in 535ms (Views: 454.7ms | ActiveRecord: 19.6ms | Allocations: 102657)
+web-1     |
+web-1     |
+web-1     | Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBIdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cbfe07e1461b57ffc6ce26c357cb9470252f24e1/dummy.jpg" for 192.168.65.1 at 2024-05-10 17:13:44 +0900
+web-1     | Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+web-1     | Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e1b37815f60346ce29cc4518ce692cb7be2f7ee2/dummy.jpg" for 192.168.65.1 at 2024-05-10 17:13:44 +0900
+web-1     | Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+web-1     | Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBIZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9d600d8f032b76272b489be8f59324aac1f5b764/dummy.jpg" for 192.168.65.1 at 2024-05-10 17:13:44 +0900
+web-1     | Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+web-1     | Processing by ActiveStorage::Blobs::RedirectController#show as JPEG
+web-1     |   Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBIdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cbfe07e1461b57ffc6ce26c357cb9470252f24e1", "filename"=>"dummy"}
+web-1     |   ActiveStorage::Blob Load (3.2ms)  SELECT `active_storage_blobs`.* FROM `active_storage_blobs` WHERE `active_storage_blobs`.`id` = 26 LIMIT 1
+web-1     |   Disk Storage (0.8ms) Generated URL for file at key: xj8uye0lq6fn5rm4oaeho1h94nsg (http://localhost:3001/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlR280ZFhsbE1HeHhObVp1TlhKdE5HOWhaV2h2TVdnNU5HNXpad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SMWJXMTVMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpIVnRiWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDI0LTA1LTEwVDA4OjE4OjQ0Ljg3NloiLCJwdXIiOiJibG9iX2tleSJ9fQ==--8ff8b3aa64b4b6f07eb2a8b46da6d9eee8dd47a0/dummy.jpg)
+web-1     | Redirected to http://localhost:3001/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlR280ZFhsbE1HeHhObVp1TlhKdE5HOWhaV2h2TVdnNU5HNXpad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SMWJXMTVMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpIVnRiWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDI0LTA1LTEwVDA4OjE4OjQ0Ljg3NloiLCJwdXIiOiJibG9iX2tleSJ9fQ==--8ff8b3aa64b4b6f07eb2a8b46da6d9eee8dd47a0/dummy.jpg
+web-1     | Completed 302 Found in 45ms (ActiveRecord: 3.2ms | Allocations: 2644)
+web-1     |
+web-1     |
+web-1     | Processing by ActiveStorage::Blobs::RedirectController#show as JPEG
+web-1     |   Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e1b37815f60346ce29cc4518ce692cb7be2f7ee2", "filename"=>"dummy"}
+web-1     |   ActiveStorage::Blob Load (5.2ms)  SELECT `active_storage_blobs`.* FROM `active_storage_blobs` WHERE `active_storage_blobs`.`id` = 27 LIMIT 1
+web-1     | Processing by ActiveStorage::Blobs::RedirectController#show as JPEG
+web-1     |   Disk Storage (0.5ms) Generated URL for file at key: bx2vqx8ubdpb9eoit34eeq4ydykf (http://localhost:3001/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhZbmd5ZG5GNE9IVmlaSEJpT1dWdmFYUXpOR1ZsY1RSNVpIbHJaZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SMWJXMTVMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpIVnRiWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDI0LTA1LTEwVDA4OjE4OjQ0LjkzNVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--34a0ace648898ffa646ef592320325a4db44ca1c/dummy.jpg)
+web-1     |   Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBIZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9d600d8f032b76272b489be8f59324aac1f5b764", "filename"=>"dummy"}
+web-1     | Redirected to http://localhost:3001/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhZbmd5ZG5GNE9IVmlaSEJpT1dWdmFYUXpOR1ZsY1RSNVpIbHJaZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SMWJXMTVMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpIVnRiWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDI0LTA1LTEwVDA4OjE4OjQ0LjkzNVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--34a0ace648898ffa646ef592320325a4db44ca1c/dummy.jpg
+web-1     | Completed 302 Found in 31ms (ActiveRecord: 5.2ms | Allocations: 2305)
+web-1     |
+web-1     |
+web-1     |   ActiveStorage::Blob Load (2.1ms)  SELECT `active_storage_blobs`.* FROM `active_storage_blobs` WHERE `active_storage_blobs`.`id` = 25 LIMIT 1
+web-1     |   Disk Storage (0.5ms) Generated URL for file at key: iuppfuzw2phph8n6yp9nuy8v2gne (http://localhost:3001/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhhWFZ3Y0daMWVuY3ljR2h3YURodU5ubHdPVzUxZVRoMk1tZHVaUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SMWJXMTVMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpIVnRiWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDI0LTA1LTEwVDA4OjE4OjQ0Ljk2MloiLCJwdXIiOiJibG9iX2tleSJ9fQ==--36d915ddad54380f171990a2e8fc06bc7b98a73b/dummy.jpg)
+web-1     | Redirected to http://localhost:3001/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhhWFZ3Y0daMWVuY3ljR2h3YURodU5ubHdPVzUxZVRoMk1tZHVaUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SMWJXMTVMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpIVnRiWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDI0LTA1LTEwVDA4OjE4OjQ0Ljk2MloiLCJwdXIiOiJibG9iX2tleSJ9fQ==--36d915ddad54380f171990a2e8fc06bc7b98a73b/dummy.jpg
+web-1     | Completed 302 Found in 19ms (ActiveRecord: 2.1ms | Allocations: 1679)
+web-1     |
+web-1     |
+web-1     | Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlR280ZFhsbE1HeHhObVp1TlhKdE5HOWhaV2h2TVdnNU5HNXpad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SMWJXMTVMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpIVnRiWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDI0LTA1LTEwVDA4OjE4OjQ0Ljg3NloiLCJwdXIiOiJibG9iX2tleSJ9fQ==--8ff8b3aa64b4b6f07eb2a8b46da6d9eee8dd47a0/dummy.jpg" for 192.168.65.1 at 2024-05-10 17:13:44 +0900
+web-1     | Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+web-1     | Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhZbmd5ZG5GNE9IVmlaSEJpT1dWdmFYUXpOR1ZsY1RSNVpIbHJaZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SMWJXMTVMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpIVnRiWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDI0LTA1LTEwVDA4OjE4OjQ0LjkzNVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--34a0ace648898ffa646ef592320325a4db44ca1c/dummy.jpg" for 192.168.65.1 at 2024-05-10 17:13:45 +0900
+web-1     | Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+web-1     | Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhhWFZ3Y0daMWVuY3ljR2h3YURodU5ubHdPVzUxZVRoMk1tZHVaUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SMWJXMTVMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpIVnRiWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDI0LTA1LTEwVDA4OjE4OjQ0Ljk2MloiLCJwdXIiOiJibG9iX2tleSJ9fQ==--36d915ddad54380f171990a2e8fc06bc7b98a73b/dummy.jpg" for 192.168.65.1 at 2024-05-10 17:13:45 +0900
+web-1     | Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+web-1     | Processing by ActiveStorage::DiskController#show as JPEG
+web-1     |   Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"dummy"}
+web-1     | Completed 200 OK in 11ms (ActiveRecord: 0.0ms | Allocations: 509)
+web-1     |
+web-1     |
+web-1     | Processing by ActiveStorage::DiskController#show as JPEG
+web-1     |   Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"dummy"}
+web-1     | Completed 200 OK in 7ms (ActiveRecord: 0.0ms | Allocations: 183)
+web-1     |
+web-1     |
+web-1     | Processing by ActiveStorage::DiskController#show as JPEG
+web-1     |   Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"dummy"}
+web-1     | Completed 200 OK in 5ms (ActiveRecord: 0.0ms | Allocations: 174)
+web-1     |
+web-1     |
+
+web-1     | Started GET "/posts/9" for 192.168.65.1 at 2024-05-10 17:16:43 +0900
+web-1     | Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+web-1     | Processing by PostsController#show as HTML
+web-1     |   Parameters: {"id"=>"9"}
+web-1     |   Post Load (1.5ms)  SELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 9 LIMIT 1
+web-1     |   ↳ app/controllers/posts_controller.rb:15:in `show'
+web-1     |   ActiveStorage::Attachment Load (1.6ms)  SELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'images' AND `active_storage_attachments`.`record_id` = 9
+web-1     |   ↳ app/controllers/posts_controller.rb:15:in `show'
+web-1     |   ActiveStorage::Blob Load (0.6ms)  SELECT `active_storage_blobs`.* FROM `active_storage_blobs` WHERE `active_storage_blobs`.`id` IN (25, 26, 27)
+web-1     |   ↳ app/controllers/posts_controller.rb:15:in `show'
+web-1     |   ActiveStorage::VariantRecord Load (4.8ms)  SELECT `active_storage_variant_records`.* FROM `active_storage_variant_records` WHERE `active_storage_variant_records`.`blob_id` IN (25, 26, 27)
+web-1     |   ↳ app/controllers/posts_controller.rb:15:in `show'
+web-1     |   Rendering layout layouts/application.html.erb
+web-1     |   Rendering posts/show.html.erb within layouts/application
+web-1     |   Rendered posts/_carousel_images.html.erb (Duration: 11.3ms | Allocations: 1191)
+web-1     |   User Load (0.5ms)  SELECT `users`.* FROM `users` WHERE `users`.`id` = 9 LIMIT 1
+web-1     |   ↳ app/views/posts/show.html.erb:10
+web-1     |   ActiveStorage::Attachment Load (0.6ms)  SELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 9 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'profile_image' LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:14:in `avatar'
+web-1     |   User Load (1.0ms)  SELECT `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1
+web-1     |   ↳ app/views/posts/show.html.erb:15
+web-1     |   Post Exists? (0.5ms)  SELECT 1 AS one FROM `posts` INNER JOIN `likes` ON `posts`.`id` = `likes`.`post_id` WHERE `likes`.`user_id` = 11 AND `posts`.`id` = 9 LIMIT 1
+web-1     |   ↳ app/models/user.rb:59:in `like?'
+web-1     |   Rendered posts/likes/_like.html.erb (Duration: 0.3ms | Allocations: 93)
+web-1     |   Rendered posts/likes/_likes.html.erb (Duration: 23.5ms | Allocations: 6754)
+web-1     |   Comment Load (0.9ms)  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 9
+web-1     |   ↳ app/views/posts/show.html.erb:62
+web-1     |   User Load (0.6ms)  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+web-1     |   ↳ app/views/posts/comments/_comment.html.erb:3
+web-1     |   ActiveStorage::Attachment Load (0.7ms)  SELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 1 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'profile_image' LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:14:in `avatar'
+web-1     |   CACHE User Load (0.0ms)  SELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+web-1     |   ↳ app/views/posts/comments/_comment.html.erb:3
+web-1     |   CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 1 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'profile_image' LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:14:in `avatar'
+web-1     |   User Load (0.7ms)  SELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1
+web-1     |   ↳ app/views/posts/comments/_comment.html.erb:3
+web-1     |   ActiveStorage::Attachment Load (0.5ms)  SELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 2 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'profile_image' LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:14:in `avatar'
+web-1     |   CACHE User Load (0.0ms)  SELECT `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1
+web-1     |   ↳ app/views/posts/comments/_comment.html.erb:3
+web-1     |   ActiveStorage::Attachment Load (0.6ms)  SELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 11 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'profile_image' LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:14:in `avatar'
+web-1     |   ActiveStorage::Blob Load (0.9ms)  SELECT `active_storage_blobs`.* FROM `active_storage_blobs` WHERE `active_storage_blobs`.`id` = 38 LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:25:in `avatar'
+web-1     |   ActiveStorage::VariantRecord Load (0.6ms)  SELECT `active_storage_variant_records`.* FROM `active_storage_variant_records` WHERE `active_storage_variant_records`.`blob_id` = 38 AND `active_storage_variant_records`.`variation_digest` = 'EHCfWBA4Ulm0qPBU5kp7oAAzt/0=' LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:25:in `avatar'
+web-1     |   Rendered collection of posts/comments/_comment.html.erb [4 times] (Duration: 82.1ms | Allocations: 14493)
+web-1     |   Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+web-1     |   Rendered posts/comments/_form.html.erb (Duration: 5.0ms | Allocations: 686)
+web-1     |   Rendered posts/show.html.erb within layouts/application (Duration: 210.1ms | Allocations: 44892)
+web-1     |   Rendered shared/_search_modal.html.erb (Duration: 1.6ms | Allocations: 728)
+web-1     |   CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 11 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'profile_image' LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:14:in `avatar'
+web-1     |   CACHE ActiveStorage::Blob Load (0.0ms)  SELECT `active_storage_blobs`.* FROM `active_storage_blobs` WHERE `active_storage_blobs`.`id` = 38 LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:25:in `avatar'
+web-1     |   CACHE ActiveStorage::VariantRecord Load (0.1ms)  SELECT `active_storage_variant_records`.* FROM `active_storage_variant_records` WHERE `active_storage_variant_records`.`blob_id` = 38 AND `active_storage_variant_records`.`variation_digest` = 'EHCfWBA4Ulm0qPBU5kp7oAAzt/0=' LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:25:in `avatar'
+web-1     |   Rendered layouts/_header.html.erb (Duration: 23.2ms | Allocations: 3925)
+web-1     |   Rendered shared/_flash_messages.html.erb (Duration: 0.4ms | Allocations: 36)
+web-1     |   Rendered layout layouts/application.html.erb (Duration: 401.7ms | Allocations: 62107)
+web-1     | Completed 200 OK in 631ms (Views: 392.5ms | ActiveRecord: 40.6ms | Allocations: 100193)
+web-1     |
+web-1     |
+web-1     | Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhhWFZ3Y0daMWVuY3ljR2h3YURodU5ubHdPVzUxZVRoMk1tZHVaUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SMWJXMTVMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpIVnRiWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDI0LTA1LTEwVDA4OjE4OjQ0Ljk2MloiLCJwdXIiOiJibG9iX2tleSJ9fQ==--36d915ddad54380f171990a2e8fc06bc7b98a73b/dummy.jpg" for 192.168.65.1 at 2024-05-10 17:16:45 +0900
+web-1     | Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+web-1     | Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhZbmd5ZG5GNE9IVmlaSEJpT1dWdmFYUXpOR1ZsY1RSNVpIbHJaZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SMWJXMTVMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpIVnRiWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDI0LTA1LTEwVDA4OjE4OjQ0LjkzNVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--34a0ace648898ffa646ef592320325a4db44ca1c/dummy.jpg" for 192.168.65.1 at 2024-05-10 17:16:46 +0900
+web-1     | Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+web-1     | Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlR280ZFhsbE1HeHhObVp1TlhKdE5HOWhaV2h2TVdnNU5HNXpad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SMWJXMTVMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpIVnRiWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDI0LTA1LTEwVDA4OjE4OjQ0Ljg3NloiLCJwdXIiOiJibG9iX2tleSJ9fQ==--8ff8b3aa64b4b6f07eb2a8b46da6d9eee8dd47a0/dummy.jpg" for 192.168.65.1 at 2024-05-10 17:16:46 +0900
+web-1     | Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+web-1     | Processing by ActiveStorage::DiskController#show as JPEG
+web-1     | Processing by ActiveStorage::DiskController#show as JPEG
+web-1     | Processing by ActiveStorage::DiskController#show as JPEG
+web-1     |   Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"dummy"}
+web-1     |   Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"dummy"}
+web-1     |   Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"dummy"}
+web-1     | Completed 304 Not Modified in 25ms (ActiveRecord: 0.0ms | Allocations: 816)
+web-1     |
+web-1     |
+web-1     | Completed 304 Not Modified in 24ms (ActiveRecord: 0.0ms | Allocations: 1099)
+web-1     |
+web-1     |
+web-1     | Completed 304 Not Modified in 17ms (ActiveRecord: 0.0ms | Allocations: 1382)
+web-1     |
+web-1     |
+
+web-1     | Started GET "/posts/9" for 192.168.65.1 at 2024-05-10 17:18:20 +0900
+web-1     | Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+web-1     | Processing by PostsController#show as HTML
+web-1     |   Parameters: {"id"=>"9"}
+web-1     |   Post Load (0.5ms)  SELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 9 LIMIT 1
+web-1     |   ↳ app/controllers/posts_controller.rb:15:in `show'
+web-1     |   ActiveStorage::Attachment Load (0.6ms)  SELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'images' AND `active_storage_attachments`.`record_id` = 9
+web-1     |   ↳ app/controllers/posts_controller.rb:15:in `show'
+web-1     |   ActiveStorage::Blob Load (0.5ms)  SELECT `active_storage_blobs`.* FROM `active_storage_blobs` WHERE `active_storage_blobs`.`id` IN (25, 26, 27)
+web-1     |   ↳ app/controllers/posts_controller.rb:15:in `show'
+web-1     |   ActiveStorage::VariantRecord Load (0.5ms)  SELECT `active_storage_variant_records`.* FROM `active_storage_variant_records` WHERE `active_storage_variant_records`.`blob_id` IN (25, 26, 27)
+web-1     |   ↳ app/controllers/posts_controller.rb:15:in `show'
+web-1     |   Rendering layout layouts/application.html.erb
+web-1     |   Rendering posts/show.html.erb within layouts/application
+web-1     |   Rendered posts/_carousel_images.html.erb (Duration: 7.3ms | Allocations: 1192)
+web-1     |   User Load (0.6ms)  SELECT `users`.* FROM `users` WHERE `users`.`id` = 9 LIMIT 1
+web-1     |   ↳ app/views/posts/show.html.erb:10
+web-1     |   ActiveStorage::Attachment Load (1.0ms)  SELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 9 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'profile_image' LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:14:in `avatar'
+web-1     |   User Load (0.6ms)  SELECT `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1
+web-1     |   ↳ app/views/posts/show.html.erb:15
+web-1     |   Post Exists? (0.6ms)  SELECT 1 AS one FROM `posts` INNER JOIN `likes` ON `posts`.`id` = `likes`.`post_id` WHERE `likes`.`user_id` = 11 AND `posts`.`id` = 9 LIMIT 1
+web-1     |   ↳ app/models/user.rb:59:in `like?'
+web-1     |   Rendered posts/likes/_like.html.erb (Duration: 0.8ms | Allocations: 93)
+web-1     |   Rendered posts/likes/_likes.html.erb (Duration: 21.3ms | Allocations: 6754)
+web-1     |   Comment Load (0.5ms)  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 9
+web-1     |   ↳ app/views/posts/show.html.erb:62
+web-1     |   User Load (0.5ms)  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (1, 2, 11)
+web-1     |   ↳ app/views/posts/show.html.erb:62
+web-1     |   ActiveStorage::Attachment Load (0.5ms)  SELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 1 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'profile_image' LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:14:in `avatar'
+web-1     |   ActiveStorage::Attachment Load (0.7ms)  SELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 2 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'profile_image' LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:14:in `avatar'
+web-1     |   ActiveStorage::Attachment Load (0.5ms)  SELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 11 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'profile_image' LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:14:in `avatar'
+web-1     |   ActiveStorage::Blob Load (0.5ms)  SELECT `active_storage_blobs`.* FROM `active_storage_blobs` WHERE `active_storage_blobs`.`id` = 38 LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:25:in `avatar'
+web-1     |   ActiveStorage::VariantRecord Load (0.6ms)  SELECT `active_storage_variant_records`.* FROM `active_storage_variant_records` WHERE `active_storage_variant_records`.`blob_id` = 38 AND `active_storage_variant_records`.`variation_digest` = 'EHCfWBA4Ulm0qPBU5kp7oAAzt/0=' LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:25:in `avatar'
+web-1     |   Rendered collection of posts/comments/_comment.html.erb [4 times] (Duration: 45.5ms | Allocations: 11304)
+web-1     |   Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 23)
+web-1     |   Rendered posts/comments/_form.html.erb (Duration: 3.5ms | Allocations: 684)
+web-1     |   Rendered posts/show.html.erb within layouts/application (Duration: 143.0ms | Allocations: 40823)
+web-1     |   Rendered shared/_search_modal.html.erb (Duration: 1.2ms | Allocations: 728)
+web-1     |   CACHE ActiveStorage::Attachment Load (0.0ms)  SELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 11 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'profile_image' LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:14:in `avatar'
+web-1     |   CACHE ActiveStorage::Blob Load (0.0ms)  SELECT `active_storage_blobs`.* FROM `active_storage_blobs` WHERE `active_storage_blobs`.`id` = 38 LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:25:in `avatar'
+web-1     |   CACHE ActiveStorage::VariantRecord Load (0.0ms)  SELECT `active_storage_variant_records`.* FROM `active_storage_variant_records` WHERE `active_storage_variant_records`.`blob_id` = 38 AND `active_storage_variant_records`.`variation_digest` = 'EHCfWBA4Ulm0qPBU5kp7oAAzt/0=' LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:25:in `avatar'
+web-1     |   Rendered layouts/_header.html.erb (Duration: 20.9ms | Allocations: 3928)
+web-1     |   Rendered shared/_flash_messages.html.erb (Duration: 0.2ms | Allocations: 36)
+web-1     |   Rendered layout layouts/application.html.erb (Duration: 311.8ms | Allocations: 58143)
+web-1     | Completed 200 OK in 458ms (Views: 306.7ms | ActiveRecord: 20.9ms | Allocations: 96457)
+web-1     |
+web-1     |
+web-1     | Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhhWFZ3Y0daMWVuY3ljR2h3YURodU5ubHdPVzUxZVRoMk1tZHVaUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SMWJXMTVMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpIVnRiWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDI0LTA1LTEwVDA4OjE4OjQ0Ljk2MloiLCJwdXIiOiJibG9iX2tleSJ9fQ==--36d915ddad54380f171990a2e8fc06bc7b98a73b/dummy.jpg" for 192.168.65.1 at 2024-05-10 17:18:22 +0900
+web-1     | Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+web-1     | Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlR280ZFhsbE1HeHhObVp1TlhKdE5HOWhaV2h2TVdnNU5HNXpad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SMWJXMTVMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpIVnRiWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDI0LTA1LTEwVDA4OjE4OjQ0Ljg3NloiLCJwdXIiOiJibG9iX2tleSJ9fQ==--8ff8b3aa64b4b6f07eb2a8b46da6d9eee8dd47a0/dummy.jpg" for 192.168.65.1 at 2024-05-10 17:18:22 +0900
+web-1     | Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+web-1     | Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhZbmd5ZG5GNE9IVmlaSEJpT1dWdmFYUXpOR1ZsY1RSNVpIbHJaZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SMWJXMTVMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpIVnRiWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDI0LTA1LTEwVDA4OjE4OjQ0LjkzNVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--34a0ace648898ffa646ef592320325a4db44ca1c/dummy.jpg" for 192.168.65.1 at 2024-05-10 17:18:22 +0900
+web-1     | Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+web-1     | Processing by ActiveStorage::DiskController#show as JPEG
+web-1     | Processing by ActiveStorage::DiskController#show as JPEG
+web-1     |   Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"dummy"}
+web-1     | Processing by ActiveStorage::DiskController#show as JPEG
+web-1     |   Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"dummy"}
+web-1     |   Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"dummy"}
+web-1     | Completed 304 Not Modified in 25ms (ActiveRecord: 0.0ms | Allocations: 1067)
+web-1     |
+web-1     |
+web-1     | Completed 304 Not Modified in 23ms (ActiveRecord: 0.0ms | Allocations: 967)
+web-1     |
+web-1     |
+web-1     | Completed 304 Not Modified in 22ms (ActiveRecord: 0.0ms | Allocations: 957)
+web-1     |
+web-1     |
+
+web-1     | Started GET "/posts/9" for 192.168.65.1 at 2024-05-10 17:23:38 +0900
+web-1     | Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+web-1     | Processing by PostsController#show as HTML
+web-1     |   Parameters: {"id"=>"9"}
+web-1     |   Post Load (0.4ms)  SELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 9 LIMIT 1
+web-1     |   ↳ app/controllers/posts_controller.rb:15:in `show'
+web-1     |   ActiveStorage::Attachment Load (0.7ms)  SELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_type` = 'Post' AND `active_storage_attachments`.`name` = 'images' AND `active_storage_attachments`.`record_id` = 9
+web-1     |   ↳ app/controllers/posts_controller.rb:15:in `show'
+web-1     |   ActiveStorage::Blob Load (0.5ms)  SELECT `active_storage_blobs`.* FROM `active_storage_blobs` WHERE `active_storage_blobs`.`id` IN (25, 26, 27)
+web-1     |   ↳ app/controllers/posts_controller.rb:15:in `show'
+web-1     |   ActiveStorage::VariantRecord Load (0.4ms)  SELECT `active_storage_variant_records`.* FROM `active_storage_variant_records` WHERE `active_storage_variant_records`.`blob_id` IN (25, 26, 27)
+web-1     |   ↳ app/controllers/posts_controller.rb:15:in `show'
+web-1     |   Rendering layout layouts/application.html.erb
+web-1     |   Rendering posts/show.html.erb within layouts/application
+web-1     |   Rendered posts/_carousel_images.html.erb (Duration: 7.0ms | Allocations: 1192)
+web-1     |   User Load (0.7ms)  SELECT `users`.* FROM `users` WHERE `users`.`id` = 9 LIMIT 1
+web-1     |   ↳ app/views/posts/show.html.erb:10
+web-1     |   ActiveStorage::Attachment Load (1.0ms)  SELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 9 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'profile_image' LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:14:in `avatar'
+web-1     |   User Load (1.1ms)  SELECT `users`.* FROM `users` WHERE `users`.`id` = 11 LIMIT 1
+web-1     |   ↳ app/views/posts/show.html.erb:15
+web-1     |   Post Exists? (0.4ms)  SELECT 1 AS one FROM `posts` INNER JOIN `likes` ON `posts`.`id` = `likes`.`post_id` WHERE `likes`.`user_id` = 11 AND `posts`.`id` = 9 LIMIT 1
+web-1     |   ↳ app/models/user.rb:59:in `like?'
+web-1     |   Rendered posts/likes/_like.html.erb (Duration: 0.2ms | Allocations: 93)
+web-1     |   Rendered posts/likes/_likes.html.erb (Duration: 16.9ms | Allocations: 6754)
+web-1     |   Comment Load (0.5ms)  SELECT `comments`.* FROM `comments` WHERE `comments`.`post_id` = 9
+web-1     |   ↳ app/views/posts/show.html.erb:62
+web-1     |   User Load (0.7ms)  SELECT `users`.* FROM `users` WHERE `users`.`id` IN (1, 2, 11)
+web-1     |   ↳ app/views/posts/show.html.erb:62
+web-1     |   ActiveStorage::Attachment Load (0.7ms)  SELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'profile_image' AND `active_storage_attachments`.`record_id` IN (1, 2, 11)
+web-1     |   ↳ app/views/posts/show.html.erb:62
+web-1     |   ActiveStorage::Blob Load (0.5ms)  SELECT `active_storage_blobs`.* FROM `active_storage_blobs` WHERE `active_storage_blobs`.`id` = 38
+web-1     |   ↳ app/views/posts/show.html.erb:62
+web-1     |   ActiveStorage::VariantRecord Load (0.4ms)  SELECT `active_storage_variant_records`.* FROM `active_storage_variant_records` WHERE `active_storage_variant_records`.`blob_id` = 38 AND `active_storage_variant_records`.`variation_digest` = 'EHCfWBA4Ulm0qPBU5kp7oAAzt/0=' LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:25:in `avatar'
+web-1     |   Rendered collection of posts/comments/_comment.html.erb [4 times] (Duration: 33.5ms | Allocations: 9924)
+web-1     |   Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+web-1     |   Rendered posts/comments/_form.html.erb (Duration: 2.9ms | Allocations: 686)
+web-1     |   Rendered posts/show.html.erb within layouts/application (Duration: 125.5ms | Allocations: 39478)
+web-1     |   Rendered shared/_search_modal.html.erb (Duration: 3.1ms | Allocations: 746)
+web-1     |   ActiveStorage::Attachment Load (1.2ms)  SELECT `active_storage_attachments`.* FROM `active_storage_attachments` WHERE `active_storage_attachments`.`record_id` = 11 AND `active_storage_attachments`.`record_type` = 'User' AND `active_storage_attachments`.`name` = 'profile_image' LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:14:in `avatar'
+web-1     |   ActiveStorage::Blob Load (0.5ms)  SELECT `active_storage_blobs`.* FROM `active_storage_blobs` WHERE `active_storage_blobs`.`id` = 38 LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:25:in `avatar'
+web-1     |   CACHE ActiveStorage::VariantRecord Load (0.0ms)  SELECT `active_storage_variant_records`.* FROM `active_storage_variant_records` WHERE `active_storage_variant_records`.`blob_id` = 38 AND `active_storage_variant_records`.`variation_digest` = 'EHCfWBA4Ulm0qPBU5kp7oAAzt/0=' LIMIT 1
+web-1     |   ↳ app/decorators/user_decorator.rb:25:in `avatar'
+web-1     |   Rendered layouts/_header.html.erb (Duration: 26.1ms | Allocations: 4999)
+web-1     |   Rendered shared/_flash_messages.html.erb (Duration: 0.2ms | Allocations: 36)
+web-1     |   Rendered layout layouts/application.html.erb (Duration: 283.0ms | Allocations: 57878)
+web-1     | Completed 200 OK in 413ms (Views: 275.7ms | ActiveRecord: 18.2ms | Allocations: 96274)
+web-1     |
+web-1     |
+web-1     | Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBIdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cbfe07e1461b57ffc6ce26c357cb9470252f24e1/dummy.jpg" for 192.168.65.1 at 2024-05-10 17:23:40 +0900
+web-1     | Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+web-1     | Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBIZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9d600d8f032b76272b489be8f59324aac1f5b764/dummy.jpg" for 192.168.65.1 at 2024-05-10 17:23:40 +0900
+web-1     | Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+web-1     | Started GET "/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e1b37815f60346ce29cc4518ce692cb7be2f7ee2/dummy.jpg" for 192.168.65.1 at 2024-05-10 17:23:40 +0900
+web-1     | Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+web-1     | Processing by ActiveStorage::Blobs::RedirectController#show as JPEG
+web-1     |   Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBIdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cbfe07e1461b57ffc6ce26c357cb9470252f24e1", "filename"=>"dummy"}
+web-1     |   ActiveStorage::Blob Load (1.4ms)  SELECT `active_storage_blobs`.* FROM `active_storage_blobs` WHERE `active_storage_blobs`.`id` = 26 LIMIT 1
+web-1     |   Disk Storage (0.6ms) Generated URL for file at key: xj8uye0lq6fn5rm4oaeho1h94nsg (http://localhost:3001/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlR280ZFhsbE1HeHhObVp1TlhKdE5HOWhaV2h2TVdnNU5HNXpad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SMWJXMTVMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpIVnRiWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDI0LTA1LTEwVDA4OjI4OjQwLjU2MloiLCJwdXIiOiJibG9iX2tleSJ9fQ==--ffcfbe98493f374ccf06fb099a01708d8e491a56/dummy.jpg)
+web-1     | Redirected to http://localhost:3001/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlR280ZFhsbE1HeHhObVp1TlhKdE5HOWhaV2h2TVdnNU5HNXpad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SMWJXMTVMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpIVnRiWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDI0LTA1LTEwVDA4OjI4OjQwLjU2MloiLCJwdXIiOiJibG9iX2tleSJ9fQ==--ffcfbe98493f374ccf06fb099a01708d8e491a56/dummy.jpg
+web-1     | Completed 302 Found in 27ms (ActiveRecord: 1.4ms | Allocations: 2522)
+web-1     |
+web-1     |
+web-1     | Processing by ActiveStorage::Blobs::RedirectController#show as JPEG
+web-1     |   Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBIZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9d600d8f032b76272b489be8f59324aac1f5b764", "filename"=>"dummy"}
+web-1     |   ActiveStorage::Blob Load (2.9ms)  SELECT `active_storage_blobs`.* FROM `active_storage_blobs` WHERE `active_storage_blobs`.`id` = 25 LIMIT 1
+web-1     |   Disk Storage (0.4ms) Generated URL for file at key: iuppfuzw2phph8n6yp9nuy8v2gne (http://localhost:3001/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhhWFZ3Y0daMWVuY3ljR2h3YURodU5ubHdPVzUxZVRoMk1tZHVaUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SMWJXMTVMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpIVnRiWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDI0LTA1LTEwVDA4OjI4OjQwLjU5OVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--1406ddccad9368e7d04ce40474ab776b4c6f87ff/dummy.jpg)
+web-1     | Redirected to http://localhost:3001/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhhWFZ3Y0daMWVuY3ljR2h3YURodU5ubHdPVzUxZVRoMk1tZHVaUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SMWJXMTVMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpIVnRiWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDI0LTA1LTEwVDA4OjI4OjQwLjU5OVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--1406ddccad9368e7d04ce40474ab776b4c6f87ff/dummy.jpg
+web-1     | Completed 302 Found in 26ms (ActiveRecord: 2.9ms | Allocations: 1817)
+web-1     |
+web-1     |
+web-1     | Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlR280ZFhsbE1HeHhObVp1TlhKdE5HOWhaV2h2TVdnNU5HNXpad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SMWJXMTVMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpIVnRiWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDI0LTA1LTEwVDA4OjI4OjQwLjU2MloiLCJwdXIiOiJibG9iX2tleSJ9fQ==--ffcfbe98493f374ccf06fb099a01708d8e491a56/dummy.jpg" for 192.168.65.1 at 2024-05-10 17:23:40 +0900
+web-1     | Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+web-1     | Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhhWFZ3Y0daMWVuY3ljR2h3YURodU5ubHdPVzUxZVRoMk1tZHVaUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SMWJXMTVMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpIVnRiWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDI0LTA1LTEwVDA4OjI4OjQwLjU5OVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--1406ddccad9368e7d04ce40474ab776b4c6f87ff/dummy.jpg" for 192.168.65.1 at 2024-05-10 17:23:40 +0900
+web-1     | Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+web-1     | Processing by ActiveStorage::Blobs::RedirectController#show as JPEG
+web-1     | Processing by ActiveStorage::DiskController#show as JPEG
+web-1     | Processing by ActiveStorage::DiskController#show as JPEG
+web-1     |   Parameters: {"signed_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e1b37815f60346ce29cc4518ce692cb7be2f7ee2", "filename"=>"dummy"}
+web-1     |   Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"dummy"}
+web-1     |   Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"dummy"}
+web-1     | Completed 200 OK in 12ms (ActiveRecord: 0.0ms | Allocations: 776)
+web-1     |
+web-1     |
+web-1     |   ActiveStorage::Blob Load (5.4ms)  SELECT `active_storage_blobs`.* FROM `active_storage_blobs` WHERE `active_storage_blobs`.`id` = 27 LIMIT 1
+web-1     | Completed 200 OK in 13ms (ActiveRecord: 0.0ms | Allocations: 1049)
+web-1     |
+web-1     |
+web-1     |   Disk Storage (0.7ms) Generated URL for file at key: bx2vqx8ubdpb9eoit34eeq4ydykf (http://localhost:3001/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhZbmd5ZG5GNE9IVmlaSEJpT1dWdmFYUXpOR1ZsY1RSNVpIbHJaZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SMWJXMTVMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpIVnRiWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDI0LTA1LTEwVDA4OjI4OjQxLjAzNVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--42f579d12e015469c288cac9851143621d62c955/dummy.jpg)
+web-1     | Redirected to http://localhost:3001/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhZbmd5ZG5GNE9IVmlaSEJpT1dWdmFYUXpOR1ZsY1RSNVpIbHJaZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SMWJXMTVMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpIVnRiWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDI0LTA1LTEwVDA4OjI4OjQxLjAzNVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--42f579d12e015469c288cac9851143621d62c955/dummy.jpg
+web-1     | Completed 302 Found in 42ms (ActiveRecord: 5.4ms | Allocations: 2968)
+web-1     |
+web-1     |
+web-1     | Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhZbmd5ZG5GNE9IVmlaSEJpT1dWdmFYUXpOR1ZsY1RSNVpIbHJaZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpUFdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SMWJXMTVMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjblpIVnRiWGt1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDI0LTA1LTEwVDA4OjI4OjQxLjAzNVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--42f579d12e015469c288cac9851143621d62c955/dummy.jpg" for 192.168.65.1 at 2024-05-10 17:23:41 +0900
+web-1     | Cannot render console from 192.168.65.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+web-1     | Processing by ActiveStorage::DiskController#show as JPEG
+web-1     |   Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"dummy"}
+web-1     | Completed 200 OK in 8ms (ActiveRecord: 0.0ms | Allocations: 187)
+web-1     |
+web-1     |
