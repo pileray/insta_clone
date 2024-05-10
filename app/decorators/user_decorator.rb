@@ -26,4 +26,5 @@ class UserDecorator < ApplicationDecorator
     image = size ? profile_image.variant(size).processed : profile_image
     h.rails_storage_proxy_url(image, only_path: true)
   end
+  # rubocop:enable Metrics/MethodLength:
 end
