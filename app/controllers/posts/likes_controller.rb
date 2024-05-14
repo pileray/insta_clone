@@ -3,9 +3,9 @@ class Posts::LikesController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    if current_user.like(@post)
-      create_notifications_about_like(@post)
-    end
+    return unless current_user.like(@post)
+
+    create_notifications_about_like(@post)
   end
 
   def destroy
@@ -14,9 +14,9 @@ class Posts::LikesController < ApplicationController
   end
 
   private
+
   def create_notifications_about_like(post)
     notification = Notification.create!(title: "#{current_user.username}さんがあなたの投稿をいいねしました", url: post_url(post))
     notification.notify(post.user)
   end
-
 end

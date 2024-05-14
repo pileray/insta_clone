@@ -11,9 +11,9 @@ class Posts::CommentsController < ApplicationController
 
   def create
     @comment = current_user.comments.build(comment_params)
-    if @comment.save
-      create_notification_about_comment_to_own_user(@comment)
-    end
+    return unless @comment.save
+
+    create_notification_about_comment_to_own_user(@comment)
   end
 
   def update
@@ -42,7 +42,8 @@ class Posts::CommentsController < ApplicationController
 
   def create_notification_about_comment_to_own_user(comment)
     user = comment.post.user
-    notification = Notification.create!(title: "#{comment.user.username}さんがあなたの投稿にコメントしました", url: post_url(comment.post))
+    notification = Notification.create!(title: "#{comment.user.username}さんがあなたの投稿にコメントしました",
+                                        url: post_url(comment.post))
     notification.notify(user)
   end
 end

@@ -10,7 +10,7 @@ class Notification < ApplicationRecord
     user_notifications = users.pluck(:id).map do |user_id|
       { notification_id: id, user_id: }
     end
-    UserNotification.insert_all(user_notifications)
+    UserNotification.insert_all(user_notifications) # rubocop:disable Rails/SkipsModelValidations
   end
 
   # def notify(users)
