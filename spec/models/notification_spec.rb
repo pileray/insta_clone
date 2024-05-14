@@ -1,0 +1,20 @@
+require 'rails_helper'
+
+RSpec.describe Notification, type: :model do
+  describe '#notify' do
+    let!(:notification){ create(:notification) }
+    context '引数が単一である場合' do
+      let!(:user) { create(:user) }
+      it 'UserNotificationのレコードが1件追加される' do
+        expect{notification.notify(user)}.to change{ UserNotification.count }.by(1)
+      end
+    end
+
+    context '引数がコレクションの場合' do
+      let!(:users) { create_list(:user, 10) }
+      it 'UserNotificationのレコードが複数件追加される' do
+        expect{notification.notify(users)}.to change{ UserNotification.count }.by(10)
+      end
+    end
+  end
+end
