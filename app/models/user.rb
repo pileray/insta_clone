@@ -28,6 +28,8 @@ class User < ApplicationRecord
   has_many :passive_relationship, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy,
                                   inverse_of: :followed
   has_many :followers, through: :passive_relationship, source: :follower
+  has_many :user_notifications, dependent: :destroy
+  has_many :notifications, through: :user_notifications
 
   validates :profile_image,
             blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..(5.megabytes) }
