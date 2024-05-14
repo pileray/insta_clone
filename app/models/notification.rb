@@ -4,9 +4,6 @@ class Notification < ApplicationRecord
 
   validates :title, presence: true
   validates :url, presence: true, format: /\A#{URI::DEFAULT_PARSER.make_regexp(%w[http https])}\z/
-  # まずどこかでURLとtitleを格納したNotificationを作成する
-  # usersをどこかで作成する
-  # インスタンスメソッドでnotification.notify(users)としてそのユーザーのUserNotificationsを作成する
 
   def notify(*user)
     users = user.flatten
