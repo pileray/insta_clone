@@ -56,6 +56,8 @@ gem 'pagy'
 gem 'rails-i18n'
 gem 'sorcery'
 
+gem 'config'
+gem 'letter_opener_web'
 gem 'ransack'
 
 group :development, :test do
