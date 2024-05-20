@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <%= form_with model: @user, url: mypage_notification_setting_path do |f| %>
+        <%= f.collection_check_boxes :notification_timings, NotificationTiming.all, :id, :timing_type %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+</div>
