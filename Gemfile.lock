@@ -119,6 +119,8 @@ GEM
       activesupport (>= 5.0)
       request_store (>= 1.0)
       ruby2_keywords
+    enum_help (0.0.19)
+      activesupport (>= 3.0.0)
     erb_lint (0.5.0)
       activesupport
       better_html (>= 2.0.1)
@@ -375,6 +377,7 @@ DEPENDENCIES
   config
   debug
   draper
+  enum_help
   erb_lint
   factory_bot_rails
   faker
