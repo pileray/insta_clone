@@ -17,5 +17,4 @@ class Mypage::NotificationSettingsController < Mypage::BaseController
   def notification_settings_params
     params.require(:user).permit(notification_timing_ids: [])
   end
-
 end

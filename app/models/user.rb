@@ -30,7 +30,7 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationship, source: :follower
   has_many :user_notifications, dependent: :destroy
   has_many :notifications, through: :user_notifications
-  has_many :user_notification_timings
+  has_many :user_notification_timings, dependent: :destroy
   has_many :notification_timings, through: :user_notification_timings
 
   validates :profile_image,

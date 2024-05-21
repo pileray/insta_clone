@@ -14,10 +14,10 @@ class Posts::CommentsController < ApplicationController
     # rubocop:disable Style/GuardClause
     if @comment.save
       create_notification_about_comment_to_own_user(@comment)
-      UserMailer.with(
-        user_from: current_user,
-        user_to: @comment.post.user,
-        comment: @comment).comment_post.deliver_later if @comment.post.user.accept_notification?(:on_commented)
+      if @comment.post.user.accept_notification?(:on_commented)
+        UserMailer.with(user_from: current_user, user_to: @comment.post.user,
+                        comment: @comment).comment_post.deliver_later
+      end
     end
     # rubocop:enable Style/GuardClause
   end
