@@ -4,7 +4,7 @@ class Users::RelationshipsController < ApplicationController
     # rubocop:disable Style/GuardClause
     if current_user.follow(@user)
       create_notification_about_follow_to_followed_user(@user)
-      UserMailer.with(user_from: current_user, user_to: @user).follow.deliver_later
+      UserMailer.with(user_from: current_user, user_to: @user).follow.deliver_later if @user.accepted_notification?(:on_followed)
     end
     # rubocop:enable Style/GuardClause
   end

@@ -82,4 +82,8 @@ class User < ApplicationRecord
   def feed
     Post.where(user_id: following_ids << id)
   end
+
+  def accept_notification?(type)
+    notification_timings.find_by(timing_type: type).present?
+  end
 end
