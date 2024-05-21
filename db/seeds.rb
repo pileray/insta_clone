@@ -5,7 +5,4 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-require './db/seeds/users.rb'
-require './db/seeds/posts.rb'
-require './db/seeds/comments.rb'
-require './db/seeds/notification_timings.rb'
+require "./db/seeds/environment/#{Rails.env.downcase}.rb"

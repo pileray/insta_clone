@@ -126,4 +126,46 @@ RSpec.describe User, type: :model do
     it { is_expected.not_to include post_by_user_c }
   end
 
+  describe '#accept_notification?' do
+    let!(:user) { create(:user) }
+    describe ':on_commented' do
+      before do
+        notification_timing = NotificationTiming.find_by!(timing_type: :on_commented)
+        user.notification_timings << notification_timing
+      end
+
+      it 'コメント時の通知のみ許可されていること' do
+        expect(user.accept_notification?(:on_commented)).to eq true
+        expect(user.accept_notification?(:on_liked)).to eq false
+        expect(user.accept_notification?(:on_followed)).to eq false
+      end
+    end
+
+    describe ':on_liked' do
+      before do
+        notification_timing = NotificationTiming.find_by!(timing_type: :on_liked)
+        user.notification_timings << notification_timing
+      end
+
+      it 'いいね時の通知のみ許可されていること' do
+        expect(user.accept_notification?(:on_commented)).to eq false
+        expect(user.accept_notification?(:on_liked)).to eq true
+        expect(user.accept_notification?(:on_followed)).to eq false
+      end
+    end
+
+    describe ':on_followed' do
+      before do
+        notification_timing = NotificationTiming.find_by!(timing_type: :on_followed)
+        user.notification_timings << notification_timing
+      end
+
+      it 'フォロー時の通知のみ許可されていること' do
+        expect(user.accept_notification?(:on_commented)).to eq false
+        expect(user.accept_notification?(:on_liked)).to eq false
+        expect(user.accept_notification?(:on_followed)).to eq true
+      end
+    end
+  end
+
 end

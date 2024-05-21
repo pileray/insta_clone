@@ -9,7 +9,7 @@ class Posts::LikesController < ApplicationController
       UserMailer.with(
         user_from: current_user,
         user_to: @post.user,
-        post: @post).like_post.deliver_later @post.user.accept_notification?(:on_liked)
+        post: @post).like_post.deliver_later if @post.user.accept_notification?(:on_liked)
     end
     # rubocop:enable Style/GuardClause
   end
