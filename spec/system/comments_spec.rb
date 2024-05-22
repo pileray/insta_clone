@@ -15,9 +15,6 @@ RSpec.describe 'コメント', type: :system do
         click_on '登録する'
       end
       expect(page).to have_content 'コメントです'
-
-      mail = ActionMailer::Base.deliveries.last
-      expect(mail.to).to eq([post.user.email])
     end
   end
 

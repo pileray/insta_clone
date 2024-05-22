@@ -62,4 +62,8 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   config.include LoginMacros
+
+  config.before :suite do
+    system 'bin/rails db:seed'
+  end
 end

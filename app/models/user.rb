@@ -30,6 +30,8 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationship, source: :follower
   has_many :user_notifications, dependent: :destroy
   has_many :notifications, through: :user_notifications
+  has_many :user_notification_timings, dependent: :destroy
+  has_many :notification_timings, through: :user_notification_timings
 
   validates :profile_image,
             blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..(5.megabytes) }
@@ -79,5 +81,9 @@ class User < ApplicationRecord
 
   def feed
     Post.where(user_id: following_ids << id)
+  end
+
+  def accept_notification?(type)
+    notification_timings.find_by(timing_type: type).present?
   end
 end
