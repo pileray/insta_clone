@@ -64,6 +64,8 @@ gem 'sidekiq'
 
 gem 'enum_help'
 
+gem 'meta-tags'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'annotate'
