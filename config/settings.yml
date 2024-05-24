@@ -6,9 +6,7 @@ meta:
     - 'Rails'
     - 'InstaClone'
     - 'Rails特訓コース'
-# ここを追加
+    # 修正
   og:
     type: 'website'
-# 他の人がここを削除した
-
-# 他の人がここを追加
+    image_path: "/ogp.png"
