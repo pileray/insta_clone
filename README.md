@@ -23,5 +23,6 @@ Things you may want to cover:
 
 * ...
 
+あああああああ
 コンフリクトを起こしたい
-mainブランチを更新
+mainブランチを更新　したよ
