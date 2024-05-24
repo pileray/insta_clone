@@ -9,6 +9,6 @@ meta:
 # ここを追加
   og:
     type: 'website'
-    image_path: "/ogp.png"
+# 他の人がここを削除した
 
 # 他の人がここを追加
