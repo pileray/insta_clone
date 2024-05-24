@@ -1,6 +1,7 @@
 module ApplicationHelper
   include Pagy::Frontend
 
+  # rubocop:disable Metrics/MethodLength
   def default_meta_tags
     {
       site: Settings.meta.site,
@@ -23,4 +24,5 @@ module ApplicationHelper
       }
     }
   end
+  # rubocop:enable Metrics/MethodLength
 end
